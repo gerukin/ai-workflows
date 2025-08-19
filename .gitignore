@@ -1,0 +1,16 @@
+# Allow developers to colocate their own files with the project
+# And handles local configuration files (ex: `.env.local`)
+# Also ignores the directory where the test data is stored
+*.local
+
+# Ignore the environment file (should be created by the user)
+.env
+
+# Allow all files in docs/example (including normally ignored ones)
+!docs/example/**
+
+# Ignore dependencies (will be installed fresh by the user)
+node_modules
+
+# File system stuff
+.DS_Store
