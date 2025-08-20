@@ -1,0 +1,44 @@
+code: invoice-schema
+
+type: object
+description: This represents an invoice with only explicitly known property values (no assumptions unless explicitly stated).
+
+properties:
+  invoiceNumber:
+    type: string
+    description: The unique identifier for the invoice.
+  invoiceDate:
+    type: string
+    format: date
+    description: The date the invoice was issued (YYYY-MM-DD).
+  dueDate:
+    type: string
+    format: date
+    description: The date by which the payment should be made (YYYY-MM-DD).
+  billingEntity:
+    type: string
+    description: The name of the entity that issued the invoice (generally the supplier or seller - prefer the company or contact name to codes).
+  billedEntity:
+    type: string
+    description: The name of the entity being billed (generally the buyer or client - prefer the company or contact name to codes).
+  billedEntityAddress:
+    type: string
+    description: The address of the entity being billed (including street address, city, state/province, postal code, and country if specifically known).
+  subTotal:
+    type: number
+    description: The sum of all item totals before tax.
+  taxAmount:
+    type: number
+    description: The total tax amount applied to the invoice.
+  totalAmount:
+    type: number
+    description: The total amount due on the invoice, including all items, taxes, and fees.
+  currency:
+    type: string
+    pattern: '^[A-Z]{3}$'
+    description: The currency in which the amounts are denominated, as a 3 char ISO code (e.g. USD, JPY...). If not mentioned explicitly, this is the main currency of the billing entity's country, and if not available, the billed entity's country. If neither is available, it is null.
+
+required:
+  - invoiceDate
+  - billedEntity
+  - totalAmount
