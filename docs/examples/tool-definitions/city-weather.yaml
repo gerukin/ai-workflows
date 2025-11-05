@@ -1,0 +1,18 @@
+code: city-weather
+
+name: cityWeather
+description: Fetch the weather for a specific city.
+
+parameters:
+  type: object
+  properties:
+    cityName:
+      type: string
+      description: The name of the city  to fetch the weather for (in English or Native language).
+    countryCode:
+      type: string
+      pattern: '^[A-Z]{2}$'
+      description: 'The 2 char country code of the city (optional, but helps to disambiguate cities - ex: US or JP).'
+
+  required:
+    - cityName
